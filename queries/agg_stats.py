@@ -11,7 +11,7 @@ result = conn.execute(f"""
         MIN(score)                                          AS min_score,
         MAX(score)                                          AS max_score,
         COUNT(*)                                            AS total_stories,
-        PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY score) AS median_score
+        MEDIAN(SCORE)                                       AS median_score
     FROM '{ROOT}/data/hnbq.csv'
     WHERE score IS NOT NULL
 """)
